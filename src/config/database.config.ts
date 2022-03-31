@@ -5,7 +5,8 @@ const { DB_HOST,DB_USER,DB_PASSWORD,DB_NAME, DATABASE_URL } = process.env;
 
 const sequelize = new Sequelize(DATABASE_URL||"", {
     dialect:'postgres',
-    logging:false
+    logging:false,
+    ssl: false,
 }
 );
 
