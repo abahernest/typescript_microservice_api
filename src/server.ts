@@ -44,7 +44,8 @@ router.use((req, res, next) => {
 const httpServer = http.createServer(router);
 const PORT: any = process.env.PORT ?? 3000;
 httpServer.listen(PORT, async() => {
-    await sequelize.authenticate().then(()=>{
+    await sequelize.authenticate().then(async()=>{
+        // await sequelize.sync();
         console.log("database connected")
     }).catch(e=>{throw e})
     console.log(`server is running on port ${PORT}`)
