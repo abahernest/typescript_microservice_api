@@ -9,6 +9,6 @@ const sequelize = new Sequelize(DATABASE_URL||"", {
 }
 );
 
-export default sequelize;
+export default sequelize; 
 
 
