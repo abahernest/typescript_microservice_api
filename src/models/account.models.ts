@@ -1,27 +1,17 @@
-import { Model, AllowNull, AutoIncrement, Column, NotEmpty, PrimaryKey, Table } from "sequelize-typescript";
+require("dotenv").config;
+import {DataTypes} from "@sequelize/core"
+import sequelize from "../config/database.config"
 
-export interface AccountInterface{
-    id?: number | null,
-    auth_id?:    string,
-    username?:   string
-}
+const Account = sequelize.define('account',{
+    username: {type:DataTypes.STRING,allowNull:false},
+    auth_id: {type:DataTypes.STRING,allowNull:false}
+},{
+    freezeTableName:true,
+    timestamps:false
+});
 
-@Table({
-    tableName: "accounts",
-})
-export default class Account extends Model implements AccountInterface{
-    @AutoIncrement
-    @PrimaryKey
-    @Column
-    id?: number;
+// (async()=>{
+//     await Account.sync();
+// })();
 
-    @AllowNull(false)
-    @NotEmpty
-    @Column
-    auth_id!: string;
-
-    @AllowNull(false)
-    @NotEmpty
-    @Column
-    username!: string;
-}
+export default Account;

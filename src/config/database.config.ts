@@ -1,11 +1,12 @@
+require("dotenv").config();
+import {Sequelize} from "@sequelize/core";
 
-const { DB_HOST,DATABASE_URL } = process.env;
+const { DB_HOST,DB_USER,DB_PASSWORD,DB_NAME } = process.env;
 
-import {Sequelize} from "sequelize-typescript";
-const sequelize = new Sequelize(DATABASE_URL||"", {
+const sequelize = new Sequelize(DB_NAME||"",DB_USER||"",DB_PASSWORD||"", {
     host: DB_HOST,
     dialect:'postgres',
-    models: [__dirname+'/models']
+    logging:false
 }
 );
 

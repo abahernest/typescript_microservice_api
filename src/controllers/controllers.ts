@@ -1,32 +1,44 @@
-import { Request, Response, NextFunction } from 'express';
+import Redis from "ioredis";
+//interfaces
+import {requestBody,controllerOutput} from "../interfaces/interface"
+
+//Instantiate Redis
+const redis = new Redis();
 
 // inbound sms
-export const InboundSMS = async (req: Request, res: Response, next: NextFunction) => {
+export const InboundSMS = async (data:requestBody) => {
     try{
-        return res.status(200).json({
-            message: "inbound sms ok",
-            error: ""
-        });
+        return {
+            code:200,
+            data:{
+                message: "inbound sms ok",
+                error: ""
+            }}
     }catch(e){
-        return res.status(200).json({
-            message: "",
-            error: "unknown failure"
-        });
+        return {
+            code:500,
+            data:{
+                message: "",
+                error: "unknown failure"
+        }}
     }
-
-};
+}
 
 // outbound sms
-export const OutboundSMS = async (req: Request, res: Response, next: NextFunction) => {
+export const OutboundSMS = async (data:requestBody) => {
     try{
-        return res.status(200).json({
-            message: "outbound sms ok",
-            error: ""
-        });
+        return {
+            code:200,
+            data:{
+                message: "outbound sms ok",
+                error: ""
+            }}
     }catch(e){
-        return res.status(200).json({
-            message: "",
-            error: "unknown failure"
-        });
+        return {
+            code:500,
+            data:{
+                message: "",
+                error: "unknown failure"
+        }}
     }
-};
+}

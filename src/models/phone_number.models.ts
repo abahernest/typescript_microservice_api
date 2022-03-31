@@ -1,27 +1,14 @@
-import { Model, AllowNull, AutoIncrement, Column, NotEmpty, PrimaryKey, Table } from "sequelize-typescript";
+import {DataTypes} from "@sequelize/core"
+import sequelize from "../config/database.config"
 
-export interface PhoneInterface{
-    id?: number | null,
-    number?:    string,
-    account_id?:   number
-}
-
-@Table({
-    tableName: "phone_number",
+const PhoneNumber = sequelize.define('phone_number',{
+    number: {type:DataTypes.STRING,allowNull:false},
+    account_id: {type:DataTypes.INTEGER,allowNull:false}
+},{
+    freezeTableName:true,
+    timestamps:false,
 })
-export default class PhoneNumber extends Model implements PhoneInterface{
-    @AutoIncrement
-    @PrimaryKey
-    @Column
-    id?: number;
 
-    @AllowNull(false)
-    @NotEmpty
-    @Column
-    number!: string;
+// PhoneNumber.sync()
 
-    @AllowNull(false)
-    @NotEmpty
-    @Column
-    account_id!: number;
-}
+export default PhoneNumber;
