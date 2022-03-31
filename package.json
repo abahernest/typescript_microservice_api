@@ -2,8 +2,9 @@
   "name": "typescript_microservice_api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/server.js",
   "scripts": {
+    "start":"tsc && node dist/server.js",
     "dev": "nodemon src/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
