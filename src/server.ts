@@ -1,5 +1,9 @@
 import http from 'http';
 import express, { Express } from 'express';
+require("dotenv").config();
+
+//Import DB
+import sequelize from "./config/database.config";
 
 //Import router
 import routes from './routes/routes';
@@ -39,4 +43,9 @@ router.use((req, res, next) => {
 /** Server */
 const httpServer = http.createServer(router);
 const PORT: any = process.env.PORT ?? 3000;
-httpServer.listen(PORT, () => console.log(`server is running on port ${PORT}`));
+httpServer.listen(PORT, () => {
+    sequelize.authenticate().then(()=>{
+        console.log("database connected")
+    }).catch(e=>{throw e})
+    console.log(`server is running on port ${PORT}`)
+});
