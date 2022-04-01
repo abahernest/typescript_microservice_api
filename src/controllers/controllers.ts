@@ -57,7 +57,7 @@ export const InboundSMS = async (data:requestBody) => {
 export const OutboundSMS = async (data:requestBody) => {
     try{
         const redis_response = await redis.get(data.to)
-        if (redis_response!==null) {
+        if (redis_response==data.from) {
             
             //cache blocked request 
             await redis.set(`redis_id:${data.from}`,data.from)
@@ -85,12 +85,14 @@ export const OutboundSMS = async (data:requestBody) => {
                 }
             }
         }
+        
         const phone_json = await PhoneNumber.findAll({
             where:{
                 number:data.from,
                 account_id:data.currentUser.id
             }
         });
+        
         const phoneObj = JSON.parse(JSON.stringify(phone_json,null,2));
         
         //'from' field not found
