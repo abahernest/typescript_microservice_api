@@ -6,7 +6,8 @@ require('dotenv').config()
 import {requestBody} from "../interfaces/interface"
 
 //Instantiate Redis
-const redis = new Redis(String(process.env.REDIS_URL));
+const redis_string = process.env.REDIS_URL == null ? '' : String(process.env.REDIS_URL)
+const redis = new Redis(redis_string);
 
 // inbound sms
 export const InboundSMS = async (data:requestBody) => {
