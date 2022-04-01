@@ -26,7 +26,7 @@ export const InboundSMS = async (data:requestBody) => {
                 code:404,
                 data:{
                     message: "",
-                    error: "'to' parameter not found"
+                    error: "to parameter not found"
                 }}
         }
 
@@ -102,7 +102,7 @@ export const OutboundSMS = async (data:requestBody) => {
                 code:404,
                 data:{
                     message: "",
-                    error: "'from,' parameter not found"
+                    error: "from parameter not found"
                 }}
         }
 
