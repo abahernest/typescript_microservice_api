@@ -1,4 +1,7 @@
 {
+  "exlude": [
+    "/*/*.test.ts"
+  ],
   "compilerOptions": {
     "target": "es6",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
     /* Modules */
@@ -10,11 +13,13 @@
     "forceConsistentCasingInFileNames": true,            /* Ensure that casing is correct in imports. */
     "sourceMap": true,
     /* Type Checking */
-    "strict": true,                                      /* Enable all strict type-checking options. */
+    "strict": false,                                      /* Enable all strict type-checking options. */
     
     /* Completeness */
     "skipLibCheck": true,                                 /* Skip type checking all .d.ts files. */
     "experimentalDecorators":true,
-    "allowJs": true
-  }
+  },
+"include": [
+  "./src/**/*.ts"
+],
 }
