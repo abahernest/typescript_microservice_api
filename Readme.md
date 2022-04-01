@@ -1,4 +1,4 @@
-# Inbound Outbound SMS
+# Cached Messaging Service
 
 ## Technologies
 * NodeJs (Typescript)
